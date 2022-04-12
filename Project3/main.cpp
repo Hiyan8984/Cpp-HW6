@@ -178,16 +178,31 @@ public:
 };
 
 int* ArrayUtility2::concat(int s1[], int s2[], int size) {
-	int temp[10];
+	int* temp = new int[10];
+	int* ptr;
 	for (int i = 0; i < size; i++) {
 		temp[i] = s1[i];
 	}
 	for (int i = size; i < 10; i++) {
-		temp[i] = s2[i];
+		temp[i] = s2[i-size];
+	}
+	ptr = temp;
+	return ptr;
+	
+}
+
+int* remove(int s1[], int s2[], int size, int& retSize) {
+	int count = 0;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (s1[i] == s2[j]) {
+				count++;
+			}
+		}
 	}
 
-	return temp;
-	
+
+	return NULL;
 }
 
 int main() {
@@ -205,11 +220,16 @@ int main() {
 
 	cout << "합친 정수 배열을 출력한다.";
 	int* arrxy = ArrayUtility2::concat(arrx, arry, 5);
-
 	for (int i = 0; i < 10; i++) {
-		cout << arrxy[i];
+		cout << arrxy[i] << endl;
 	}
 
+	int len = 0;
+	int* arrx_y = ArrayUtility2::remove(arrx, arry, 5, len);
+
+
+
+	delete arrxy;
 
 
 
